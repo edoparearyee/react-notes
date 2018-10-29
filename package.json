@@ -12,7 +12,9 @@
     "lint:fix": "npm run stylelint -- --fix && npm run eslint -- --fix && npm run prettier -- --write",
     "eslint": "eslint \"src/**/*.js\"",
     "stylelint": "stylelint --syntax scss \"src/**/*.{css,scss}\"",
-    "prettier": "prettier --config .prettierrc -l \"src/**/*.{ts,js,json,css,scss}\""
+    "prettier": "prettier --config .prettierrc -l \"src/**/*.{ts,js,json,css,scss}\"",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
     "react": "^16.6.0",
@@ -33,7 +35,13 @@
     "stylelint-config-standard": "^18.2.0",
     "stylelint-order": "^1.0.0",
     "stylelint-scss": "^3.3.2",
-    "tslint-config-prettier": "^1.15.0"
+    "tslint-config-prettier": "^1.15.0",
+    "@storybook/react": "^4.0.0",
+    "@storybook/addon-actions": "^4.0.0",
+    "@storybook/addon-links": "^4.0.0",
+    "@storybook/addons": "^4.0.0",
+    "@babel/core": "^7.1.2",
+    "babel-loader": "^8.0.4"
   },
   "config": {
     "commitizen": {
