@@ -1,23 +1,25 @@
 import React from 'react';
-
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
 
-import { Button, Welcome } from '@storybook/react/demo';
+import '../scss/main.scss';
 
-storiesOf('Welcome', module).add('to Storybook', () => (
-  <Welcome showApp={linkTo('Button')} />
-));
+import Todo from '../app/Todo/Todo';
 
-storiesOf('Button', module)
-  .add('with text', () => (
-    <Button onClick={action('clicked')}>Hello Button</Button>
+storiesOf('Todo', module)
+  .add('Default', () => (
+    <Todo
+      key={0}
+      title={'Veniam est ipsum Lorem'}
+      complete={false}
+      onChange={action('onChange')}
+    />
   ))
-  .add('with some emoji', () => (
-    <Button onClick={action('clicked')}>
-      <span role="img" aria-label="so cool">
-        😀 😎 👍 💯
-      </span>
-    </Button>
+  .add('Complete', () => (
+    <Todo
+      key={0}
+      title={'Veniam est ipsum Lorem'}
+      complete={true}
+      onChange={action('onChange')}
+    />
   ));
