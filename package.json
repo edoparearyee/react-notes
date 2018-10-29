@@ -7,7 +7,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "release": "standard-version"
+    "release": "standard-version",
+    "lint": "npm run stylelint && npm run eslint && npm run prettier",
+    "lint:fix": "npm run stylelint -- --fix && npm run eslint -- --fix && npm run prettier -- --write",
+    "eslint": "eslint \"src/**/*.js\"",
+    "stylelint": "stylelint --syntax scss \"src/**/*.{css,scss}\"",
+    "prettier": "prettier --config .prettierrc -l \"src/**/*.{ts,js,json,css,scss}\""
   },
   "dependencies": {
     "react": "^16.6.0",
@@ -16,8 +21,19 @@
   },
   "devDependencies": {
     "cz-conventional-changelog": "^2.1.0",
+    "eslint-plugin-react": "^7.11.1",
+    "husky": "^1.1.2",
+    "lint-staged": "^8.0.2",
     "node-sass": "^4.9.4",
-    "standard-version": "^4.4.0"
+    "prettier": "^1.14.3",
+    "standard-version": "^4.4.0",
+    "stylelint": "^9.7.0",
+    "stylelint-config-prettier": "^4.0.0",
+    "stylelint-config-recommended-scss": "^3.2.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-order": "^1.0.0",
+    "stylelint-scss": "^3.3.2",
+    "tslint-config-prettier": "^1.15.0"
   },
   "config": {
     "commitizen": {
@@ -26,6 +42,25 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "src/**/*.{css,scss}": [
+      "stylelint --syntax scss --fix",
+      "git add"
+    ],
+    "src/**/*.{js,json,css,scss}": [
+      "prettier --config .prettierrc --write",
+      "git add"
+    ]
   },
   "browserslist": [
     ">0.2%",
