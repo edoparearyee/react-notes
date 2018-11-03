@@ -6,11 +6,12 @@ import '../scss/main.scss';
 
 import Todo from '../app/Todo/Todo';
 import TodoList from '../app/TodoList/TodoList';
+import AddTodoForm from '../app/AddTodoForm/AddTodoForm';
 
 storiesOf('Todo', module)
   .add('Default', () => (
     <Todo
-      key={0}
+      id={0}
       title={'Veniam est ipsum Lorem'}
       complete={false}
       onChange={action('onChange')}
@@ -18,7 +19,7 @@ storiesOf('Todo', module)
   ))
   .add('Complete', () => (
     <Todo
-      key={0}
+      id={0}
       title={'Veniam est ipsum Lorem'}
       complete={true}
       onChange={action('onChange')}
@@ -40,4 +41,8 @@ const mockTodos = [
 
 storiesOf('TodoList', module).add('Default', () => (
   <TodoList items={mockTodos} onChange={action('onChange')} />
+));
+
+storiesOf('AddTodoForm', module).add('Default', () => (
+  <AddTodoForm onAdd={action('onAdd')} onInput={action('onInput')} />
 ));
