@@ -14,6 +14,7 @@ class Todo extends Component {
       <div className={todoClass}>
         <input
           className="Todo__Checkbox"
+          ref={c => (this._checkboxEl = c)}
           type="checkbox"
           checked={this.props.complete}
           onChange={e => this.handleCompleteChange(e)}
@@ -27,6 +28,13 @@ class Todo extends Component {
           {this.props.title}
         </p>
       </div>
+    );
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return (
+      nextProps.title !== this._titleEl.innerText &&
+      nextProps.complete !== this._checkboxEl.value
     );
   }
 
@@ -48,7 +56,7 @@ class Todo extends Component {
 }
 
 Todo.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   complete: PropTypes.bool,
   title: PropTypes.string.isRequired,
   onChange: PropTypes.func,

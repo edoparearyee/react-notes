@@ -21,7 +21,9 @@
     "normalize.css": "^8.0.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
-    "react-scripts": "2.0.5"
+    "react-redux": "^5.1.0",
+    "react-scripts": "2.0.5",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -36,6 +38,8 @@
     "lint-staged": "^8.0.2",
     "node-sass": "^4.9.4",
     "prettier": "^1.14.3",
+    "redux-devtools": "^3.4.1",
+    "redux-devtools-extension": "^2.13.7",
     "standard-version": "^4.4.0",
     "stylelint": "^9.7.0",
     "stylelint-config-prettier": "^4.0.0",

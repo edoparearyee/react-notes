@@ -12,6 +12,7 @@ class AddTodoForm extends Component {
           onInput={() => this.handleTitleInput()}
           name="title"
           type="text"
+          value={this.props.value}
           required
         />
         <button type="submit">Add</button>
@@ -21,13 +22,12 @@ class AddTodoForm extends Component {
 
   handleTitleInput() {
     this.props.onInput({
-      title: this._inputTitle.value,
+      value: this._inputTitle.value,
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    event.target.reset();
     this.props.onAdd({
       title: this._inputTitle.value,
     });
@@ -35,6 +35,7 @@ class AddTodoForm extends Component {
 }
 
 AddTodoForm.propTypes = {
+  value: PropTypes.string.isRequired,
   onAdd: PropTypes.func,
   onInput: PropTypes.func,
 };
