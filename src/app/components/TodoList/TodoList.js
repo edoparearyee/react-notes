@@ -7,11 +7,16 @@ import Todo from '../Todo/Todo';
 class TodoList extends Component {
   render() {
     return (
-      <div>
+      <ul className="TodoList">
         {this.props.items.map((item, i) => (
-          <Todo key={i} {...item} onChange={e => this.props.onChange(e)} />
+          <Todo
+            key={i}
+            {...item}
+            onChange={this.props.onChange}
+            onToggle={this.props.onToggle}
+          />
         ))}
-      </div>
+      </ul>
     );
   }
 }
@@ -24,7 +29,8 @@ TodoList.propTypes = {
       complete: PropTypes.bool,
     }),
   ),
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
+  onToggle: PropTypes.func,
 };
 
 export default TodoList;

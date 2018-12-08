@@ -1,10 +1,10 @@
-export const EDIT_FORM = '[FORM] edit';
-export const CLEAR_FORM = '[FORM] clear';
+export const FORM_EDIT = '[FORM] Edit';
+export const FORM_CLEAR = '[FORM] Clear';
 
-export function editForm(value) {
-  return { type: EDIT_FORM, value };
+export function formEdit(value) {
+  return { type: FORM_EDIT, value };
 }
 
-export function clearForm() {
-  return { type: CLEAR_FORM };
+export function formClear() {
+  return { type: FORM_CLEAR };
 }

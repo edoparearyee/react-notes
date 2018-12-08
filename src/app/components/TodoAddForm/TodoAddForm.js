@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import './AddTodoForm.scss';
+import './TodoAddForm.scss';
 
-class AddTodoForm extends Component {
+class TodoAddForm extends Component {
   render() {
     return (
       <form onSubmit={e => this.handleSubmit(e)}>
@@ -13,9 +13,10 @@ class AddTodoForm extends Component {
           name="title"
           type="text"
           value={this.props.value}
-          required
         />
-        <button type="submit">Add</button>
+        <button type="submit" disabled={!this.props.value.length}>
+          Add
+        </button>
       </form>
     );
   }
@@ -34,10 +35,10 @@ class AddTodoForm extends Component {
   }
 }
 
-AddTodoForm.propTypes = {
+TodoAddForm.propTypes = {
   value: PropTypes.string.isRequired,
   onAdd: PropTypes.func,
   onInput: PropTypes.func,
 };
 
-export default AddTodoForm;
+export default TodoAddForm;

@@ -1,15 +1,20 @@
-export const ADD_TODO = '[TODOS] add';
-export const EDIT_TODO = '[TODOS] edit';
-export const DELETE_TODO = '[TODOS] delete';
+export const TODO_ADD = '[TODO] Add';
+export const TODO_EDIT = '[TODO] Edit';
+export const TODO_DELETE = '[TODO] Delete';
+export const TODO_TOGGLE = '[TODO] Toggle';
 
-export function addTodo(title) {
-  return { type: ADD_TODO, title };
+export function todoAdd(title) {
+  return { type: TODO_ADD, title };
 }
 
-export function editTodo(id, title) {
-  return { type: EDIT_TODO, id, title };
+export function todoEdit(id, title) {
+  return { type: TODO_EDIT, id, title };
 }
 
-export function deleteTodo(id) {
-  return { type: DELETE_TODO, id };
+export function todoDelete(id) {
+  return { type: TODO_DELETE, id };
+}
+
+export function todoToggle(id) {
+  return { type: TODO_TOGGLE, id };
 }

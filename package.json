@@ -13,7 +13,7 @@
     "eslint": "eslint \"src/**/*.js\"",
     "stylelint": "stylelint --syntax scss \"src/**/*.{css,scss}\"",
     "prettier": "prettier --config .prettierrc -l \"src/**/*.{ts,js,json,css,scss}\"",
-    "storybook": "start-storybook -p 9009 -s public",
+    "storybook": "start-storybook -p 3001 -s public",
     "build-storybook": "build-storybook -s public"
   },
   "dependencies": {

@@ -7,12 +7,12 @@ const mockTodos = [
   {
     id: 0,
     title: 'Culpa excepteur nisi fugiat',
-    completed: false,
+    complete: false,
   },
   {
     id: 1,
     title: 'Culpa duis voluptate minim',
-    completed: false,
+    complete: false,
   },
 ];
 

@@ -11,45 +11,42 @@ class Todo extends Component {
       'Todo--Complete': this.props.complete,
     });
     return (
-      <div className={todoClass}>
+      <li className={todoClass}>
         <input
           className="Todo__Checkbox"
           ref={c => (this._checkboxEl = c)}
           type="checkbox"
-          checked={this.props.complete}
-          onChange={e => this.handleCompleteChange(e)}
+          value={this.props.complete}
+          onInput={e => this.handleToggle(e)}
         />
         <p
           className="Todo__Title"
           ref={c => (this._titleEl = c)}
           contentEditable={!this.props.complete}
-          onInput={e => this.handleTitleChange(e)}
+          onInput={e => this.handleInput(e)}
         >
           {this.props.title}
         </p>
-      </div>
+      </li>
     );
   }
 
   shouldComponentUpdate(nextProps) {
     return (
-      nextProps.title !== this._titleEl.innerText &&
-      nextProps.complete !== this._checkboxEl.value
+      nextProps.title !== this._titleEl.innerText ||
+      nextProps.complete !== this.props.complete
     );
   }
 
-  handleCompleteChange(event) {
-    this.props.onChange({
+  handleToggle() {
+    this.props.onToggle({
       id: this.props.id,
-      complete: event.target.checked,
-      title: this.props.title,
     });
   }
 
-  handleTitleChange(event) {
+  handleInput(event) {
     this.props.onChange({
       id: this.props.id,
-      complete: this.props.complete,
       title: event.target.innerText,
     });
   }
@@ -60,6 +57,7 @@ Todo.propTypes = {
   complete: PropTypes.bool,
   title: PropTypes.string.isRequired,
   onChange: PropTypes.func,
+  onToggle: PropTypes.func,
 };
 
 export default Todo;

@@ -12,8 +12,10 @@
 
 .Todo__Title {
   outline: none;
+  width: 100%;
 
   .Todo--Complete & {
+    opacity: 0.5;
     text-decoration: line-through;
   }
 }

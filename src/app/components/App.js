@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './App.scss';
 import TodoListContainer from '../containers/TodoList/TodoList';
-import AddTodoFormContainer from '../containers/AddTodoForm/AddTodoForm';
+import TodoAddFormContainer from '../containers/TodoAddForm/TodoAddForm';
 
 class App extends Component {
   render() {
@@ -10,7 +10,7 @@ class App extends Component {
       <div className="App">
         <h1>Todos</h1>
         <TodoListContainer />
-        <AddTodoFormContainer />
+        <TodoAddFormContainer />
       </div>
     );
   }
