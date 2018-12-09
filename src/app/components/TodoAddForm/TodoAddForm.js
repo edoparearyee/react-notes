@@ -6,7 +6,7 @@ import './TodoAddForm.scss';
 class TodoAddForm extends Component {
   render() {
     return (
-      <form onSubmit={e => this.handleSubmit(e)}>
+      <form className="TodoAddForm" onSubmit={e => this.handleSubmit(e)}>
         <input
           ref={c => (this._inputTitle = c)}
           onInput={() => this.handleTitleInput()}

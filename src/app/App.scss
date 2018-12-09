@@ -1,0 +1,10 @@
+@import "../scss/variables";
+
+.App__Nav {
+  display: flex;
+}
+
+.App__NavItem:not(:last-child) {
+  display: inline-flex;
+  padding-right: 5px;
+}
