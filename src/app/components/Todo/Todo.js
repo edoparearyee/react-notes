@@ -16,7 +16,7 @@ class Todo extends Component {
           className="Todo__Checkbox"
           ref={c => (this._checkboxEl = c)}
           type="checkbox"
-          value={this.props.complete}
+          checked={this.props.complete}
           onInput={e => this.handleToggle(e)}
         />
         <p
@@ -27,6 +27,9 @@ class Todo extends Component {
         >
           {this.props.title}
         </p>
+        <button type="button" onClick={e => this.handleDeleteClick(e)}>
+          Delete
+        </button>
       </li>
     );
   }
@@ -40,6 +43,12 @@ class Todo extends Component {
 
   handleToggle() {
     this.props.onToggle({
+      id: this.props.id,
+    });
+  }
+
+  handleDeleteClick() {
+    this.props.onDelete({
       id: this.props.id,
     });
   }
@@ -58,6 +67,7 @@ Todo.propTypes = {
   title: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   onToggle: PropTypes.func,
+  onDelete: PropTypes.func,
 };
 
 export default Todo;

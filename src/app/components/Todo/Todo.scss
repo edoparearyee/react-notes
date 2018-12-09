@@ -6,13 +6,11 @@
   font-family: $font-family-sans-serif;
 }
 
-.Todo__Checkbox {
-  margin-right: 0.5rem;
-}
-
 .Todo__Title {
   outline: none;
-  width: 100%;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  width: 141px;
 
   .Todo--Complete & {
     opacity: 0.5;

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { todoEdit, todoToggle } from '../../actions/todos';
+import { todoEdit, todoToggle, todoDelete } from '../../actions/todos';
 
 import TodoList from '../../components/TodoList/TodoList';
 
@@ -16,6 +16,9 @@ const mapDispatchToProps = dispatch => {
     },
     onToggle: ({ id }) => {
       dispatch(todoToggle(id));
+    },
+    onDelete: ({ id }) => {
+      dispatch(todoDelete(id));
     },
   };
 };

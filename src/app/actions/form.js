@@ -1,8 +1,8 @@
-export const FORM_EDIT = '[FORM] Edit';
+export const FORM_INPUT = '[FORM] Input';
 export const FORM_CLEAR = '[FORM] Clear';
 
-export function formEdit(value) {
-  return { type: FORM_EDIT, value };
+export function formInput(value) {
+  return { type: FORM_INPUT, value };
 }
 
 export function formClear() {

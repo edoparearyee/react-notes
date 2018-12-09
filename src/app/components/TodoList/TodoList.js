@@ -14,6 +14,7 @@ class TodoList extends Component {
             {...item}
             onChange={this.props.onChange}
             onToggle={this.props.onToggle}
+            onDelete={this.props.onDelete}
           />
         ))}
       </ul>
@@ -28,9 +29,10 @@ TodoList.propTypes = {
       title: PropTypes.string.isRequired,
       complete: PropTypes.bool,
     }),
-  ),
+  ).isRequired,
   onChange: PropTypes.func,
   onToggle: PropTypes.func,
+  onDelete: PropTypes.func,
 };
 
 export default TodoList;
