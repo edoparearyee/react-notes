@@ -10,9 +10,11 @@ export function form(state = initialState, action) {
     case FORM_INPUT: {
       return newState(state, { value: action.value });
     }
+
     case FORM_CLEAR: {
       return newState(state, { value: '' });
     }
+
     default: {
       return state;
     }

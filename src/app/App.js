@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 
 import './App.scss';
 import TodosView from './components/TodosView/TodosView';
 import AboutView from './components/AboutView/AboutView';
+import NotFoundView from './components/NotFoundView/NotFoundView';
 
 class App extends Component {
   render() {
@@ -12,15 +13,26 @@ class App extends Component {
         <nav>
           <ul className="App__Nav">
             <li className="App__NavItem">
-              <Link to="/">Home</Link>
+              <NavLink
+                to="/"
+                exact={true}
+                activeClassName="App__NavItem--Active"
+              >
+                Home
+              </NavLink>
             </li>
             <li className="App__NavItem">
-              <Link to="/about">About</Link>
+              <NavLink to="/about" activeClassName="App__NavItem--Active">
+                About
+              </NavLink>
             </li>
           </ul>
         </nav>
-        <Route exact path="/" component={TodosView} />
-        <Route path="/about" component={AboutView} />
+        <Switch>
+          <Route exact path="/" component={TodosView} />
+          <Route path="/about" component={AboutView} />
+          <Route component={NotFoundView} />
+        </Switch>
       </div>
     );
   }
