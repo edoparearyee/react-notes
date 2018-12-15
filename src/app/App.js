@@ -3,8 +3,8 @@ import { Route, NavLink, Switch } from 'react-router-dom';
 
 import './App.scss';
 import TodosView from './components/TodosView/TodosView';
-import AboutView from './components/AboutView/AboutView';
 import NotFoundView from './components/NotFoundView/NotFoundView';
+import AboutViewContainer from './containers/AboutView/AboutView';
 
 class App extends Component {
   render() {
@@ -30,7 +30,7 @@ class App extends Component {
         </nav>
         <Switch>
           <Route exact path="/" component={TodosView} />
-          <Route path="/about" component={AboutView} />
+          <Route path="/about" component={AboutViewContainer} />
           <Route component={NotFoundView} />
         </Switch>
       </div>
