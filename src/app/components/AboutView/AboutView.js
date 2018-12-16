@@ -19,7 +19,7 @@ class AboutView extends Component {
     if (error) {
       contributors = <p>Error! {error.message}</p>;
     } else if (loading) {
-      contributors = <p>Loading...</p>;
+      contributors = <p>Loading…</p>;
     } else {
       contributors = (
         <ul className="ContributorList">

@@ -5,24 +5,39 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { persistStore, persistReducer } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
+import storage from 'redux-persist/lib/storage';
+import thunk from 'redux-thunk';
 
 import './scss/main.scss';
 import App from './app/App';
 import { rootReducer } from './app/reducers';
 import * as serviceWorker from './serviceWorker';
 
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['todos', 'form'],
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 const store = createStore(
-  rootReducer,
+  persistedReducer,
   composeWithDevTools(applyMiddleware(thunk)),
 );
 
+const persistor = persistStore(store);
+
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
+    <PersistGate loading={<p>Loading…</p>} persistor={persistor}>
+      <Router>
+        <App />
+      </Router>
+    </PersistGate>
   </Provider>,
   document.getElementById('root'),
 );
