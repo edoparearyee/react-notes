@@ -8,8 +8,9 @@ class TodoAddForm extends Component {
     return (
       <form className="TodoAddForm" onSubmit={e => this.handleSubmit(e)}>
         <input
+          className="TodoAddForm__Title"
           ref={c => (this._inputTitle = c)}
-          onInput={() => this.handleTitleInput()}
+          onInput={e => this.handleTitleInput(e)}
           name="title"
           type="text"
           value={this.props.value}
@@ -21,16 +22,16 @@ class TodoAddForm extends Component {
     );
   }
 
-  handleTitleInput() {
+  handleTitleInput(event) {
     this.props.onInput({
-      value: this._inputTitle.value,
+      value: event.target.value,
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
     this.props.onAdd({
-      title: this._inputTitle.value,
+      title: this.props.value,
     });
   }
 }

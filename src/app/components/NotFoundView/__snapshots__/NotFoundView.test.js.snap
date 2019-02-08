@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFoundView renders component 1`] = `
+<div
+  className="NotFoundView"
+>
+  <h1>
+    Page Not Found
+  </h1>
+  <p>
+    No match for 
+    <code>
+      /foo
+    </code>
+  </p>
+</div>
+`;

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoAddForm renders without crashing 1`] = `
+<form
+  className="TodoAddForm"
+  onSubmit={[Function]}
+>
+  <input
+    className="TodoAddForm__Title"
+    name="title"
+    onInput={[Function]}
+    type="text"
+    value="foo"
+  />
+  <button
+    disabled={false}
+    type="submit"
+  >
+    Add
+  </button>
+</form>
+`;

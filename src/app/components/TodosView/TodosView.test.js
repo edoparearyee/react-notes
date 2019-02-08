@@ -1,9 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
+
 import TodosView from './TodosView';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<TodosView />, div);
-  ReactDOM.unmountComponentAtNode(div);
+describe('TodosView', () => {
+  it('renders without crashing', () => {
+    const component = shallow(<TodosView />);
+    expect(component).toMatchSnapshot();
+  });
 });

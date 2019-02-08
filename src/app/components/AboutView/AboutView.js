@@ -75,7 +75,7 @@ AboutView.propTypes = {
       received_events_url: PropTypes.string,
       type: PropTypes.string,
       site_admin: PropTypes.bool,
-      contributiors: PropTypes.number,
+      contributors: PropTypes.number,
     }),
   ).isRequired,
   error: PropTypes.object,

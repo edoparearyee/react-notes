@@ -27,7 +27,11 @@ class Todo extends Component {
         >
           {this.props.title}
         </p>
-        <button type="button" onClick={e => this.handleDeleteClick(e)}>
+        <button
+          className="Todo__Delete"
+          type="button"
+          onClick={e => this.handleDeleteClick(e)}
+        >
           Delete
         </button>
       </li>

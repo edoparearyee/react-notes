@@ -28,6 +28,7 @@ class App extends Component {
             </li>
           </ul>
         </nav>
+        <h1>React Notes</h1>
         <Switch>
           <Route exact path="/" component={TodosView} />
           <Route path="/about" component={AboutViewContainer} />

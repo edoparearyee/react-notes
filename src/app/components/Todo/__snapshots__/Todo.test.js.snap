@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Todo renders component 1`] = `
+<li
+  className="Todo"
+>
+  <input
+    checked={false}
+    className="Todo__Checkbox"
+    onInput={[Function]}
+    type="checkbox"
+  />
+  <p
+    className="Todo__Title"
+    contentEditable={true}
+    onInput={[Function]}
+  >
+    Culpa excepteur nisi fugiat
+  </p>
+  <button
+    className="Todo__Delete"
+    onClick={[Function]}
+    type="button"
+  >
+    Delete
+  </button>
+</li>
+`;

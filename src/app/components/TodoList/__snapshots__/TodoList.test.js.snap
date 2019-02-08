@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoList renders without crashing 1`] = `
+<ul
+  className="TodoList"
+>
+  <Todo
+    complete={false}
+    id="6d3e6088-bc4b-a1b1-b0a2-61328db3ba6"
+    key="0"
+    title="Culpa excepteur nisi fugiat"
+  />
+  <Todo
+    complete={false}
+    id="a4a14b66-b53b-8511-2ba8-7203570f5cd5"
+    key="1"
+    title="Et aliqua enim aliqua id"
+  />
+</ul>
+`;

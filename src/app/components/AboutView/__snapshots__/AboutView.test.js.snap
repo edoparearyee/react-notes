@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutView renders when loading 1`] = `
+<div
+  className="AboutView"
+>
+  <h1>
+    About
+  </h1>
+  <p>
+    Officia cillum ea incididunt laborum velit. Deserunt voluptate exercitation deserunt ex occaecat fugiat enim incididunt sit est. Exercitation laborum ex fugiat in amet laboris reprehenderit velit tempor dolore nostrud do.
+  </p>
+  <h2>
+    Contributors
+  </h2>
+  <p>
+    Loading…
+  </p>
+</div>
+`;
+
+exports[`AboutView renders when not loading 1`] = `
+<div
+  className="AboutView"
+>
+  <h1>
+    About
+  </h1>
+  <p>
+    Officia cillum ea incididunt laborum velit. Deserunt voluptate exercitation deserunt ex occaecat fugiat enim incididunt sit est. Exercitation laborum ex fugiat in amet laboris reprehenderit velit tempor dolore nostrud do.
+  </p>
+  <h2>
+    Contributors
+  </h2>
+  <ul
+    className="ContributorList"
+  >
+    <li
+      className="ContributorList__Item"
+      key="0"
+    >
+      <img
+        alt="foo"
+        className="ContributorList__Image"
+        src="http://foo.com/image1.jpg"
+      />
+      <p
+        className="Contributor__Name"
+      >
+        foo
+      </p>
+    </li>
+    <li
+      className="ContributorList__Item"
+      key="1"
+    >
+      <img
+        alt="bar"
+        className="ContributorList__Image"
+        src="http://foo.com/image2.jpg"
+      />
+      <p
+        className="Contributor__Name"
+      >
+        bar
+      </p>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`AboutView renders when there is an error 1`] = `
+<div
+  className="AboutView"
+>
+  <h1>
+    About
+  </h1>
+  <p>
+    Officia cillum ea incididunt laborum velit. Deserunt voluptate exercitation deserunt ex occaecat fugiat enim incididunt sit est. Exercitation laborum ex fugiat in amet laboris reprehenderit velit tempor dolore nostrud do.
+  </p>
+  <h2>
+    Contributors
+  </h2>
+  <p>
+    Error! 
+    Something went wrong!
+  </p>
+</div>
+`;

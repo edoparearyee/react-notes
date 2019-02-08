@@ -1,9 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import NotFoundView from './NotFoundView';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<NotFoundView />, div);
-  ReactDOM.unmountComponentAtNode(div);
+describe('NotFoundView', () => {
+  it('renders component', () => {
+    const component = shallow(<NotFoundView location={{ pathname: '/foo' }} />);
+    expect(component).toMatchSnapshot();
+  });
 });

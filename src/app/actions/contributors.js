@@ -7,20 +7,20 @@ export const CONTRIBUTORS_CLEAR = '[CONTRIBUTORS] Contributors Clear';
 const API_URL =
   'https://api.github.com/repos/edoparearyee/react-notes/contributors';
 
-function contributorsLoad() {
+export function contributorsLoad() {
   return {
     type: CONTRIBUTORS_LOAD,
   };
 }
 
-function contributorsLoadSuccess(contributors) {
+export function contributorsLoadSuccess(contributors) {
   return {
     type: CONTRIBUTORS_LOAD_SUCCESS,
     contributors,
   };
 }
 
-function contributorsLoadFail(error) {
+export function contributorsLoadFail(error) {
   return {
     type: CONTRIBUTORS_LOAD_FAIL,
     error,
@@ -35,9 +35,13 @@ export function fetchContributors(dispatch) {
   dispatch(contributorsLoad());
 
   return fetch(API_URL)
-    .then(
-      response => response.json(),
-      error => dispatch(contributorsLoadFail(error)),
-    )
-    .then(response => dispatch(contributorsLoadSuccess(response)));
+    .then(response => {
+      if (response.status === 200) {
+        response.json().then(data => {
+          const action = contributorsLoadSuccess(data);
+          return dispatch(action);
+        });
+      }
+    })
+    .catch(error => dispatch(contributorsLoadFail(error)));
 }
