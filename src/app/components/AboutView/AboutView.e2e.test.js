@@ -4,7 +4,10 @@ describe('AboutView end-to-end tests', () => {
   let browser, page;
 
   beforeEach(async () => {
-    browser = await puppeteer.launch();
+    browser = await puppeteer.launch({
+      headless: true,
+      args: ['-–no-sandbox', '--disable-setuid-sandbox'],
+    });
     page = await browser.newPage();
 
     page.emulate({
@@ -18,30 +21,28 @@ describe('AboutView end-to-end tests', () => {
 
   afterEach(() => browser.close());
 
-  describe('AboutView', () => {
-    describe('API Request Success', () => {
-      beforeEach(async () => {
-        await page.goto('http://localhost:3000/about');
-        await page.waitForSelector('.AboutView');
-      });
-
-      it('displays h1 text', async () => {
-        const html = await page.$eval('h1', e => e.innerHTML);
-        expect(html).toBe('About');
-      }, 16000);
-
-      it('displays loading Message', async () => {
-        await page.waitForSelector('.LoadingMessage');
-        const message = await page.$eval('.LoadingMessage', e => e.innerHTML);
-        expect(message).toBe('Loading…');
-      }, 16000);
-
-      it('displays contributors', async () => {
-        await page.waitForSelector('.ContributorList');
-        const contributors = await page.$$('.ContributorList__Item');
-        expect(contributors.length).toBe(1);
-      }, 16000);
+  describe('API Request Success', () => {
+    beforeEach(async () => {
+      await page.goto('http://localhost:3000/about');
+      await page.waitForSelector('.AboutView');
     });
+
+    it('displays h1 text', async () => {
+      const html = await page.$eval('h1', e => e.innerHTML);
+      expect(html).toBe('About');
+    }, 16000);
+
+    it('displays loading Message', async () => {
+      await page.waitForSelector('.LoadingMessage');
+      const message = await page.$eval('.LoadingMessage', e => e.innerHTML);
+      expect(message).toBe('Loading…');
+    }, 16000);
+
+    it('displays contributors', async () => {
+      await page.waitForSelector('.ContributorList');
+      const contributors = await page.$$('.ContributorList__Item');
+      expect(contributors.length).toBe(1);
+    }, 16000);
   });
 
   describe('API Request Error', () => {

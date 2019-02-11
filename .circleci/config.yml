@@ -1,0 +1,45 @@
+#
+# CircleCI configuration for React Notes
+#
+
+version: 2
+
+jobs:
+  setup:
+    working_directory: ~/react-notes
+    docker:
+      - image: circleci/node:10-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          key: ~/react-notes-{{ .Branch }}-{{ checksum "package.json" }}
+      - run: yarn --silent
+      - save_cache:
+          key: ~/react-notes-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - 'node_modules'
+
+  test:
+    working_directory: ~/react-notes
+    docker:
+      - image: circleci/node:10-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          key: ~/react-notes-{{ .Branch }}-{{ checksum "package.json" }}
+      - run: yarn lint
+      - run:
+          name: Web Server
+          command: yarn start
+          background: true
+      - run: sleep 5 && yarn test --coverage
+      - run: yarn coverage
+
+workflows:
+  version: 2
+  setup_and_test:
+    jobs:
+      - setup
+      - test:
+          requires:
+            - setup

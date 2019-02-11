@@ -54,7 +54,10 @@ describe('TodoView end-to-end tests', () => {
   let browser, page;
 
   beforeEach(async () => {
-    browser = await puppeteer.launch();
+    browser = await puppeteer.launch({
+      headless: true,
+      args: ['-–no-sandbox', '--disable-setuid-sandbox'],
+    });
     page = await browser.newPage();
 
     page.emulate({
@@ -64,77 +67,70 @@ describe('TodoView end-to-end tests', () => {
       },
       userAgent: '',
     });
+
+    await page.goto('http://localhost:3000/');
+    await page.waitForSelector('.TodosView');
   });
 
   afterEach(() => browser.close());
 
-  describe('TodoView', () => {
-    beforeEach(async () => {
-      await page.goto('http://localhost:3000/');
-      await page.waitForSelector('.TodosView');
-    });
+  it('displays h1 text', async () => {
+    const html = await page.$eval('h1', e => e.innerHTML);
+    expect(html).toBe('Todos');
+  }, 16000);
 
-    it('displays h1 text', async () => {
-      const html = await page.$eval('h1', e => e.innerHTML);
-      expect(html).toBe('Todos');
-    }, 16000);
+  it('adds todo to list', async () => {
+    const todos = await addTodo(page, 'Id qui excepteur reprehenderit ex aute');
+    expect(todos.length).toBe(1);
+    const todoText = await getTodoTitle(page, 1);
+    expect(todoText).toEqual('Id qui excepteur reprehenderit ex aute');
+  }, 16000);
 
-    it('adds todo to list', async () => {
-      const todos = await addTodo(
-        page,
-        'Id qui excepteur reprehenderit ex aute',
-      );
-      expect(todos.length).toBe(1);
-      const todoText = await getTodoTitle(page, 1);
-      expect(todoText).toEqual('Id qui excepteur reprehenderit ex aute');
-    }, 16000);
+  it('adds multiple todos to list', async () => {
+    const todos = await addMultipleTodos(page, [
+      'Id qui excepteur reprehenderit ex aute',
+      'Ipsum nisi qui eu adipisicing dolore tempor',
+    ]);
+    expect(todos.length).toBe(2);
+    const todo1Text = await getTodoTitle(page, 1);
+    expect(todo1Text).toEqual('Id qui excepteur reprehenderit ex aute');
+    const todo2Text = await getTodoTitle(page, 2);
+    expect(todo2Text).toEqual('Ipsum nisi qui eu adipisicing dolore tempor');
+  }, 16000);
 
-    it('adds multiple todos to list', async () => {
-      const todos = await addMultipleTodos(page, [
-        'Id qui excepteur reprehenderit ex aute',
-        'Ipsum nisi qui eu adipisicing dolore tempor',
-      ]);
-      expect(todos.length).toBe(2);
-      const todo1Text = await getTodoTitle(page, 1);
-      expect(todo1Text).toEqual('Id qui excepteur reprehenderit ex aute');
-      const todo2Text = await getTodoTitle(page, 2);
-      expect(todo2Text).toEqual('Ipsum nisi qui eu adipisicing dolore tempor');
-    }, 16000);
+  it('edits todo', async () => {
+    await addMultipleTodos(page, [
+      'Id qui excepteur reprehenderit ex aute',
+      'Ipsum nisi qui eu adipisicing dolore tempor',
+    ]);
+    await editTodoTitle(page, 1, 'Nulla est enim et non aliquip');
+    await editTodoTitle(page, 2, 'Deserunt laborum officia cupidatat sit');
+    const todo1Text = await getTodoTitle(page, 1);
+    expect(todo1Text).toBe('Nulla est enim et non aliquip');
+    const todo2Text = await getTodoTitle(page, 2);
+    expect(todo2Text).toEqual('Deserunt laborum officia cupidatat sit');
+  }, 16000);
 
-    it('edits todo', async () => {
-      await addMultipleTodos(page, [
-        'Id qui excepteur reprehenderit ex aute',
-        'Ipsum nisi qui eu adipisicing dolore tempor',
-      ]);
-      await editTodoTitle(page, 1, 'Nulla est enim et non aliquip');
-      await editTodoTitle(page, 2, 'Deserunt laborum officia cupidatat sit');
-      const todo1Text = await getTodoTitle(page, 1);
-      expect(todo1Text).toBe('Nulla est enim et non aliquip');
-      const todo2Text = await getTodoTitle(page, 2);
-      expect(todo2Text).toEqual('Deserunt laborum officia cupidatat sit');
-    }, 16000);
+  it('marks todo as complete', async () => {
+    await addMultipleTodos(page, [
+      'Id qui excepteur reprehenderit ex aute',
+      'Ipsum nisi qui eu adipisicing dolore tempor',
+    ]);
+    const todoComplete = await toggleTodoComplete(page, 1);
+    const todoClass = await getTodoClass(page, 1);
+    expect(todoComplete).toBe('on');
+    expect(todoClass).toContain('Todo--Complete');
+  }, 16000);
 
-    it('marks todo as complete', async () => {
-      await addMultipleTodos(page, [
-        'Id qui excepteur reprehenderit ex aute',
-        'Ipsum nisi qui eu adipisicing dolore tempor',
-      ]);
-      const todoComplete = await toggleTodoComplete(page, 1);
-      const todoClass = await getTodoClass(page, 1);
-      expect(todoComplete).toBe('on');
-      expect(todoClass).toContain('Todo--Complete');
-    }, 16000);
+  it('deletes todo', async () => {
+    await addMultipleTodos(page, [
+      'Id qui excepteur reprehenderit ex aute',
+      'Ipsum nisi qui eu adipisicing dolore tempor',
+    ]);
 
-    it('deletes todo', async () => {
-      await addMultipleTodos(page, [
-        'Id qui excepteur reprehenderit ex aute',
-        'Ipsum nisi qui eu adipisicing dolore tempor',
-      ]);
-
-      const todos = await deleteTodo(page, 2);
-      expect(todos.length).toBe(1);
-      const todoText = await getTodoTitle(page, 1);
-      expect(todoText).toEqual('Id qui excepteur reprehenderit ex aute');
-    }, 16000);
-  });
+    const todos = await deleteTodo(page, 2);
+    expect(todos.length).toBe(1);
+    const todoText = await getTodoTitle(page, 1);
+    expect(todoText).toEqual('Id qui excepteur reprehenderit ex aute');
+  }, 16000);
 });
