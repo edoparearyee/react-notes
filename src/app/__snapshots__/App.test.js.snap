@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders component 1`] = `
+exports[`App renders component 1`] = `
 <div
   className="App"
 >
@@ -33,9 +33,6 @@ exports[`renders component 1`] = `
       </li>
     </ul>
   </nav>
-  <h1>
-    React Notes
-  </h1>
   <Switch>
     <Route
       component={[Function]}

@@ -41,6 +41,9 @@ export function fetchContributors(dispatch) {
           const action = contributorsLoadSuccess(data);
           return dispatch(action);
         });
+      } else {
+        const action = contributorsLoadFail(response);
+        return dispatch(action);
       }
     })
     .catch(error => dispatch(contributorsLoadFail(error)));

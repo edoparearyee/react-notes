@@ -13,7 +13,9 @@ exports[`AboutView renders when loading 1`] = `
   <h2>
     Contributors
   </h2>
-  <p>
+  <p
+    className="LoadingMessage"
+  >
     Loading…
   </p>
 </div>
@@ -82,7 +84,9 @@ exports[`AboutView renders when there is an error 1`] = `
   <h2>
     Contributors
   </h2>
-  <p>
+  <p
+    className="ErrorMessage"
+  >
     Error! 
     Something went wrong!
   </p>

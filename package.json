@@ -46,6 +46,7 @@
     "lint-staged": "^8.1.0",
     "node-sass": "^4.11.0",
     "prettier": "^1.15.3",
+    "puppeteer": "^1.12.2",
     "react-test-renderer": "^16.7.0",
     "redux-devtools-extension": "^2.13.7",
     "redux-mock-store": "^1.5.3",
