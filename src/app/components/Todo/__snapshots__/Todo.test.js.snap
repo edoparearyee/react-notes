@@ -7,6 +7,7 @@ exports[`Todo renders component 1`] = `
   <input
     checked={false}
     className="Todo__Checkbox"
+    onChange={[Function]}
     onInput={[Function]}
     type="checkbox"
   />
@@ -14,6 +15,7 @@ exports[`Todo renders component 1`] = `
     className="Todo__Title"
     contentEditable={true}
     onInput={[Function]}
+    suppressContentEditableWarning={true}
   >
     Culpa excepteur nisi fugiat
   </p>

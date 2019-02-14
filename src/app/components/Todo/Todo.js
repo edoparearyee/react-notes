@@ -17,12 +17,14 @@ class Todo extends Component {
           ref={c => (this._checkboxEl = c)}
           type="checkbox"
           checked={this.props.complete}
+          onChange={() => null}
           onInput={e => this.handleToggle(e)}
         />
         <p
           className="Todo__Title"
           ref={c => (this._titleEl = c)}
           contentEditable={!this.props.complete}
+          suppressContentEditableWarning={true}
           onInput={e => this.handleInput(e)}
         >
           {this.props.title}

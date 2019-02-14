@@ -11,6 +11,7 @@ class TodoAddForm extends Component {
           className="TodoAddForm__Title"
           ref={c => (this._inputTitle = c)}
           onInput={e => this.handleTitleInput(e)}
+          onChange={() => null}
           name="title"
           type="text"
           value={this.props.value}

@@ -8,6 +8,7 @@ exports[`TodoAddForm renders without crashing 1`] = `
   <input
     className="TodoAddForm__Title"
     name="title"
+    onChange={[Function]}
     onInput={[Function]}
     type="text"
     value="foo"
