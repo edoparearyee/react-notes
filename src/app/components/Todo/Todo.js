@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import ListItem from '@material-ui/core/ListItem';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import ListItemText from '@material-ui/core/ListItemText';
+import Checkbox from '@material-ui/core/Checkbox';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+
 import './Todo.scss';
 
 class Todo extends Component {
@@ -11,32 +18,33 @@ class Todo extends Component {
       'Todo--Complete': this.props.complete,
     });
     return (
-      <li className={todoClass}>
-        <input
-          className="Todo__Checkbox"
+      <ListItem role="listitem" className={todoClass}>
+        <Checkbox
           ref={c => (this._checkboxEl = c)}
-          type="checkbox"
           checked={this.props.complete}
-          onChange={() => null}
-          onInput={e => this.handleToggle(e)}
+          tabIndex={-1}
+          disableRipple
+          onChange={this.handleToggle.bind(this)}
         />
-        <p
+        <div
           className="Todo__Title"
+          onInput={e => this.handleInput(e)}
           ref={c => (this._titleEl = c)}
           contentEditable={!this.props.complete}
           suppressContentEditableWarning={true}
-          onInput={e => this.handleInput(e)}
         >
-          {this.props.title}
-        </p>
-        <button
-          className="Todo__Delete"
-          type="button"
-          onClick={e => this.handleDeleteClick(e)}
-        >
-          Delete
-        </button>
-      </li>
+          <ListItemText primary={this.props.title} />
+        </div>
+        <ListItemSecondaryAction>
+          <IconButton
+            aria-label="Delete"
+            onClick={e => this.handleDeleteClick(e)}
+            className="Todo__Delete"
+          >
+            <DeleteIcon />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
     );
   }
 

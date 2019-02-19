@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
+import Typography from '@material-ui/core/Typography';
+import Card from '@material-ui/core/Card';
+import Avatar from '@material-ui/core/Avatar';
+import CardHeader from '@material-ui/core/CardHeader';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import './AboutView.scss';
 
@@ -13,24 +18,29 @@ class AboutView extends Component {
   }
 
   render() {
-    const { error, loading, items } = this.props;
+    let { error, loading, items } = this.props;
     let contributors;
 
     if (error) {
-      contributors = <p className="ErrorMessage">Error! {error.message}</p>;
+      contributors = (
+        <Typography variant="body2" gutterBottom color="error">
+          Error! {error.message}
+        </Typography>
+      );
     } else if (loading) {
-      contributors = <p className="LoadingMessage">Loading…</p>;
+      contributors = <CircularProgress />;
     } else {
       contributors = (
         <ul className="ContributorList">
           {items.map(item => (
             <li key={item.id} className="ContributorList__Item">
-              <img
-                className="ContributorList__Image"
-                src={item.avatar_url}
-                alt={item.login}
-              />
-              <p className="Contributor__Name">{item.login}</p>
+              <Card>
+                <CardHeader
+                  avatar={<Avatar aria-label="Recipe" src={item.avatar_url} />}
+                  title={item.login}
+                  subheader={item.contributions}
+                />
+              </Card>
             </li>
           ))}
         </ul>
@@ -39,14 +49,18 @@ class AboutView extends Component {
 
     return (
       <div className="AboutView">
-        <h1>About</h1>
-        <p>
+        <Typography component="h1" variant="h4" gutterBottom>
+          About
+        </Typography>
+        <Typography variant="body1" gutterBottom>
           Officia cillum ea incididunt laborum velit. Deserunt voluptate
           exercitation deserunt ex occaecat fugiat enim incididunt sit est.
           Exercitation laborum ex fugiat in amet laboris reprehenderit velit
           tempor dolore nostrud do.
-        </p>
-        <h2>Contributors</h2>
+        </Typography>
+        <Typography component="h2" variant="h5" gutterBottom>
+          Contributors
+        </Typography>
         {contributors}
       </div>
     );
@@ -75,7 +89,7 @@ AboutView.propTypes = {
       received_events_url: PropTypes.string,
       type: PropTypes.string,
       site_admin: PropTypes.bool,
-      contributors: PropTypes.number,
+      contributions: PropTypes.number,
     }),
   ).isRequired,
   error: PropTypes.object,

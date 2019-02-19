@@ -1,16 +1,7 @@
 @import "../../../scss/variables";
 
-.Todo {
-  align-items: center;
-  display: flex;
-  font-family: $font-family-sans-serif;
-}
-
 .Todo__Title {
   outline: none;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  width: 141px;
 
   .Todo--Complete & {
     opacity: 0.5;

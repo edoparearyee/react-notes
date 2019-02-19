@@ -1,15 +1,5 @@
 @import "../scss/variables";
 
-.App__Nav {
-  display: flex;
-}
-
-.App__NavItem:not(:last-child) {
-  display: inline-flex;
-  padding-right: 5px;
-}
-
-.App__NavItem--Active {
-  color: #000;
-  text-decoration: none;
+.App {
+  padding-top: 64px;
 }

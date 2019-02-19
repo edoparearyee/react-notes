@@ -4,48 +4,22 @@ exports[`App renders component 1`] = `
 <div
   className="App"
 >
-  <nav>
-    <ul
-      className="App__Nav"
-    >
-      <li
-        className="App__NavItem"
-      >
-        <NavLink
-          activeClassName="App__NavItem--Active"
-          aria-current="page"
-          exact={true}
-          to="/"
-        >
-          Home
-        </NavLink>
-      </li>
-      <li
-        className="App__NavItem"
-      >
-        <NavLink
-          activeClassName="App__NavItem--Active"
-          aria-current="page"
-          to="/about"
-        >
-          About
-        </NavLink>
-      </li>
-    </ul>
-  </nav>
-  <Switch>
-    <Route
-      component={[Function]}
-      exact={true}
-      path="/"
-    />
-    <Route
-      component={[Function]}
-      path="/about"
-    />
-    <Route
-      component={[Function]}
-    />
-  </Switch>
+  <Connect(WithStyles(Header)) />
+  <Connect(WithStyles(withRouter(Sidebar)))>
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/"
+      />
+      <Route
+        component={[Function]}
+        path="/about"
+      />
+      <Route
+        component={[Function]}
+      />
+    </Switch>
+  </Connect(WithStyles(withRouter(Sidebar)))>
 </div>
 `;

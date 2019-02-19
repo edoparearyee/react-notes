@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import List from '@material-ui/core/List';
 
 import './TodoList.scss';
 import Todo from '../Todo/Todo';
@@ -7,7 +8,7 @@ import Todo from '../Todo/Todo';
 class TodoList extends Component {
   render() {
     return (
-      <ul className="TodoList">
+      <List className="TodoList">
         {this.props.items.map((item, i) => (
           <Todo
             key={i}
@@ -17,7 +18,7 @@ class TodoList extends Component {
             onDelete={this.props.onDelete}
           />
         ))}
-      </ul>
+      </List>
     );
   }
 }
