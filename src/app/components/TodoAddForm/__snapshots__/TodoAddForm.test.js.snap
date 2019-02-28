@@ -5,19 +5,30 @@ exports[`TodoAddForm renders without crashing 1`] = `
   className="TodoAddForm"
   onSubmit={[Function]}
 >
-  <input
-    className="TodoAddForm__Title"
-    name="title"
-    onChange={[Function]}
-    onInput={[Function]}
-    type="text"
-    value="foo"
-  />
-  <button
-    disabled={false}
-    type="submit"
+  <div
+    className="TodoAddForm__Input"
   >
-    Add
-  </button>
+    <TextField
+      className="TodoAddForm__Title"
+      id="title"
+      label="Enter todo"
+      margin="normal"
+      onChange={[Function]}
+      required={false}
+      select={false}
+      value="foo"
+      variant="standard"
+    />
+  </div>
+  <div
+    className="TodoAddForm__Submit"
+  >
+    <WithStyles(Button)
+      disabled={false}
+      variant="outlined"
+    >
+      Add
+    </WithStyles(Button)>
+  </div>
 </form>
 `;

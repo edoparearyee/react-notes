@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 import './TodoAddForm.scss';
 
@@ -7,18 +9,21 @@ class TodoAddForm extends Component {
   render() {
     return (
       <form className="TodoAddForm" onSubmit={e => this.handleSubmit(e)}>
-        <input
-          className="TodoAddForm__Title"
-          ref={c => (this._inputTitle = c)}
-          onInput={e => this.handleTitleInput(e)}
-          onChange={() => null}
-          name="title"
-          type="text"
-          value={this.props.value}
-        />
-        <button type="submit" disabled={!this.props.value.length}>
-          Add
-        </button>
+        <div className="TodoAddForm__Input">
+          <TextField
+            className="TodoAddForm__Title"
+            id="title"
+            label="Enter todo"
+            value={this.props.value}
+            onChange={e => this.handleTitleInput(e)}
+            margin="normal"
+          />
+        </div>
+        <div className="TodoAddForm__Submit">
+          <Button variant="outlined" disabled={!this.props.value.length}>
+            Add
+          </Button>
+        </div>
       </form>
     );
   }

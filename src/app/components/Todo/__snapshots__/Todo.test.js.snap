@@ -1,30 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Todo renders component 1`] = `
-<li
+<WithStyles(ListItem)
   className="Todo"
+  role="listitem"
 >
-  <input
+  <WithStyles(Checkbox)
     checked={false}
-    className="Todo__Checkbox"
+    disableRipple={true}
     onChange={[Function]}
-    onInput={[Function]}
-    type="checkbox"
+    tabIndex={-1}
   />
-  <p
+  <div
     className="Todo__Title"
     contentEditable={true}
     onInput={[Function]}
     suppressContentEditableWarning={true}
   >
-    Culpa excepteur nisi fugiat
-  </p>
-  <button
-    className="Todo__Delete"
-    onClick={[Function]}
-    type="button"
-  >
-    Delete
-  </button>
-</li>
+    <WithStyles(ListItemText)
+      primary="Culpa excepteur nisi fugiat"
+    />
+  </div>
+  <WithStyles(ListItemSecondaryAction)>
+    <WithStyles(IconButton)
+      aria-label="Delete"
+      className="Todo__Delete"
+      onClick={[Function]}
+    >
+      <pure(DeleteIcon) />
+    </WithStyles(IconButton)>
+  </WithStyles(ListItemSecondaryAction)>
+</WithStyles(ListItem)>
 `;

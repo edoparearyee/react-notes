@@ -1,3 +1,15 @@
 .TodoAddForm {
-  display: block;
+  align-items: flex-end;
+  display: Flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.TodoAddForm__Title {
+  width: 100%;
+}
+
+.TodoAddForm__Input {
+  flex-grow: 2;
+  margin-right: 10px;
 }

@@ -29,7 +29,7 @@ const mockContributors = [
     received_events_url: 'http://example.com/foo/received_events',
     type: 'bar',
     site_admin: false,
-    contributors: 1,
+    contributions: 1,
   },
 ];
 
